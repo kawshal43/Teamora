@@ -56,8 +56,9 @@ export function Header() {
         <div className="relative hidden lg:block">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative w-10 h-10 rounded-full bg-slate-100 dark:bg-[#3a3b3c] hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-colors cursor-pointer"
+            className="relative w-10 h-10 rounded-full bg-slate-100 dark:bg-[#3a3b3c] hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-500"
             title="Notifications"
+            aria-label="View notifications"
           >
             <Bell className="w-5 h-5" />
             {unreadCount > 0 && (
@@ -170,8 +171,9 @@ export function Header() {
         <div className="relative">
           <button
             onClick={() => setShowRoleMenu(!showRoleMenu)}
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-[#3a3b3c] text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shadow-2xs"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-[#3a3b3c] text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shadow-2xs focus-visible:ring-2 focus-visible:ring-blue-500"
             title="Switch user role"
+            aria-label="Switch preview user role"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span className="capitalize hidden md:inline">{currentUser.role.replace("_", " ")}</span>
@@ -215,9 +217,18 @@ export function Header() {
 
         {/* User Profile Avatar with dropdown arrow */}
         <div
+          role="button"
+          tabIndex={0}
           onClick={() => openUserProfile(currentUser)}
-          className="flex items-center gap-1 pl-1 cursor-pointer group"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              openUserProfile(currentUser);
+            }
+          }}
+          className="flex items-center gap-1 pl-1 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full"
           title={`View ${currentUser.first_name}'s Facebook profile`}
+          aria-label={`View ${currentUser.first_name}'s profile`}
         >
           <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-200 dark:ring-slate-700 shadow-xs group-hover:ring-blue-500 transition-all">
             <img

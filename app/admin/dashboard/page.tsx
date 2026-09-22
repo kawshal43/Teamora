@@ -48,12 +48,12 @@ export default function AdminDashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-xl font-bold text-slate-900">Management Overview</h2>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Management Overview</h2>
             <Badge variant="purple" size="sm" className="capitalize">
               {currentUser.role.replace("_", " ")}
             </Badge>
           </div>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Real-time workforce monitoring and pending approval queues.
           </p>
         </div>
@@ -79,58 +79,58 @@ export default function AdminDashboardPage() {
         {/* KPI 1: Live Presence */}
         <Card className="p-5">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-medium text-slate-500">Presence Today</p>
-            <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Presence Today</p>
+            <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
               <Users className="w-4 h-4" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mt-2">16 / 18</h3>
-          <div className="flex items-center gap-1.5 text-[11px] text-emerald-600 mt-1 font-semibold">
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-2">16 / 18</h3>
+          <div className="flex items-center gap-1.5 text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 font-semibold">
             <span>89% present</span>
-            <span className="text-slate-400">• 2 on leave</span>
+            <span className="text-slate-400 dark:text-slate-500">• 2 on leave</span>
           </div>
         </Card>
 
         {/* KPI 2: Worksheets Queue */}
         <Card className="p-5">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-medium text-slate-500">Pending Worksheets</p>
-            <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Pending Worksheets</p>
+            <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
               <FileText className="w-4 h-4" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mt-2">{pendingReports.length}</h3>
-          <p className="text-[11px] text-slate-400 mt-1">Awaiting review</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-2">{pendingReports.length}</h3>
+          <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">Awaiting review</p>
         </Card>
 
         {/* KPI 3: Pending Leave */}
         <Card className="p-5">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-medium text-slate-500">Pending Leaves</p>
-            <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Pending Leaves</p>
+            <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center">
               <PlaneTakeoff className="w-4 h-4" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mt-2">{pendingLeaves.length}</h3>
-          <p className="text-[11px] text-slate-400 mt-1">Requires approval</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-2">{pendingLeaves.length}</h3>
+          <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">Requires approval</p>
         </Card>
 
         {/* KPI 4: Late Check-ins */}
         <Card className="p-5">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-medium text-slate-500">Late Arrivals</p>
-            <div className="w-8 h-8 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Late Arrivals</p>
+            <div className="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center">
               <AlertTriangle className="w-4 h-4" />
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mt-2">{lateCount}</h3>
-          <p className="text-[11px] text-red-500 mt-1 font-semibold">Flagged past grace period</p>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-2">{lateCount}</h3>
+          <p className="text-[11px] text-red-500 dark:text-red-400 mt-1 font-semibold">Flagged past grace period</p>
         </Card>
       </div>
 
       {/* Live Ongoing Tasks Monitor */}
       <Card className="p-6">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
           <div className="flex items-center gap-2">
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Active Workforce & Live Ongoing Tasks</h3>
             <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold border border-emerald-200 dark:border-emerald-800">
@@ -180,9 +180,9 @@ export default function AdminDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left: Worksheets Awaiting Review */}
         <Card className="p-6">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-            <h3 className="text-base font-bold text-slate-900">Worksheets Awaiting Approval</h3>
-            <Link href="/admin/worksheet" className="text-xs font-semibold text-blue-600 hover:text-blue-700">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Worksheets Awaiting Approval</h3>
+            <Link href="/admin/worksheet" className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
               View All ({pendingReports.length})
             </Link>
           </div>
@@ -190,17 +190,17 @@ export default function AdminDashboardPage() {
           <div className="space-y-3">
             {pendingReports.length > 0 ? (
               pendingReports.map((report) => (
-                <div key={report.id} className="p-4 rounded-xl bg-slate-50/70 border border-slate-100 space-y-3">
+                <div key={report.id} className="p-4 rounded-xl bg-slate-50/70 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <img
                         src={report.user_avatar}
                         alt={report.user_name}
-                        className="w-8 h-8 rounded-full object-cover"
+                        className="w-8 h-8 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700"
                       />
                       <div>
-                        <p className="text-xs font-bold text-slate-900">{report.user_name}</p>
-                        <p className="text-[10px] text-slate-400">{report.report_date} • {report.department_name}</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white">{report.user_name}</p>
+                        <p className="text-[10px] text-slate-400 dark:text-slate-500">{report.report_date} • {report.department_name}</p>
                       </div>
                     </div>
                     <Badge variant="info" size="sm">
@@ -208,9 +208,9 @@ export default function AdminDashboardPage() {
                     </Badge>
                   </div>
 
-                  <p className="text-xs text-slate-600 line-clamp-1">{report.summary_notes}</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-1">{report.summary_notes}</p>
 
-                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100/80">
+                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100/80 dark:border-slate-700/60">
                     <Button
                       size="sm"
                       variant="outline"
@@ -229,16 +229,16 @@ export default function AdminDashboardPage() {
                 </div>
               ))
             ) : (
-              <p className="text-xs text-slate-400 py-6 text-center">No pending worksheets to review.</p>
+              <p className="text-xs text-slate-400 dark:text-slate-500 py-6 text-center">No pending worksheets to review.</p>
             )}
           </div>
         </Card>
 
         {/* Right: Pending Leave Applications */}
         <Card className="p-6">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-            <h3 className="text-base font-bold text-slate-900">Leave Applications</h3>
-            <Link href="/admin/management" className="text-xs font-semibold text-blue-600 hover:text-blue-700">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Leave Applications</h3>
+            <Link href="/admin/management" className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
               Manage Leaves
             </Link>
           </div>
@@ -246,17 +246,17 @@ export default function AdminDashboardPage() {
           <div className="space-y-3">
             {pendingLeaves.length > 0 ? (
               pendingLeaves.map((leave) => (
-                <div key={leave.id} className="p-4 rounded-xl bg-slate-50/70 border border-slate-100 space-y-3">
+                <div key={leave.id} className="p-4 rounded-xl bg-slate-50/70 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <img
                         src={leave.user_avatar}
                         alt={leave.user_name}
-                        className="w-8 h-8 rounded-full object-cover"
+                        className="w-8 h-8 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700"
                       />
                       <div>
-                        <p className="text-xs font-bold text-slate-900">{leave.user_name}</p>
-                        <p className="text-[10px] text-slate-400">{leave.department_name}</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white">{leave.user_name}</p>
+                        <p className="text-[10px] text-slate-400 dark:text-slate-500">{leave.department_name}</p>
                       </div>
                     </div>
                     <Badge variant="warning" size="sm">
@@ -264,12 +264,12 @@ export default function AdminDashboardPage() {
                     </Badge>
                   </div>
 
-                  <p className="text-xs text-slate-600 italic">"{leave.reason}"</p>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 italic">"{leave.reason}"</p>
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500">
                     Dates: {leave.start_date} to {leave.end_date}
                   </p>
 
-                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100/80">
+                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100/80 dark:border-slate-700/60">
                     <Button
                       size="sm"
                       variant="danger"
@@ -288,7 +288,7 @@ export default function AdminDashboardPage() {
                 </div>
               ))
             ) : (
-              <p className="text-xs text-slate-400 py-6 text-center">No pending leave requests.</p>
+              <p className="text-xs text-slate-400 dark:text-slate-500 py-6 text-center">No pending leave requests.</p>
             )}
           </div>
         </Card>
