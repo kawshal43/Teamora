@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { 
   Users, 
   Building2, 
@@ -36,6 +37,7 @@ import { cn } from "@/lib/utils";
 
 export default function AdminManagementPage() {
   const { 
+    currentUser,
     allEmployees, 
     updateEmployee, 
     deleteEmployee, 
@@ -199,6 +201,29 @@ export default function AdminManagementPage() {
 
     return matchesSearch && matchesDept && matchesRole && matchesStatus;
   });
+
+  if (currentUser.role === "employee") {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-6 space-y-4">
+        <div className="w-16 h-16 rounded-full bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800 shadow-xs">
+          <Shield className="w-8 h-8" />
+        </div>
+        <div className="max-w-md space-y-1.5">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+            Administrator Access Required
+          </h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Workforce & Organizational Management is restricted to administrators, HR directors, and company owners. Regular team members cannot inspect or modify employee registrations.
+          </p>
+        </div>
+        <Link href="/">
+          <Button size="sm" variant="primary">
+            Return to Dashboard
+          </Button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto select-none pb-12">

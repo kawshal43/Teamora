@@ -58,14 +58,6 @@ export function MobileBottomNav() {
       circleBg: "bg-[#8B5CF6]", // Purple circle
     },
     {
-      name: "Management",
-      href: "/admin/management",
-      icon: Users,
-      badge: null,
-      inactiveType: "circle",
-      circleBg: "bg-[#10B981]", // Emerald green circle matching screenshot media_1790083518622.png
-    },
-    {
       name: "Alerts",
       href: "#notifications",
       icon: Bell,

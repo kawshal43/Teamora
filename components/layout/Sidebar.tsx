@@ -20,7 +20,7 @@ export function Sidebar() {
   const { currentUser, openUserProfile } = useApp();
   const isAdmin = currentUser.role !== "employee";
 
-  // Navigation items for Normal Employee (Matches reference 5 icons: Home, Feed, Worksheet, Management, Setting)
+  // Navigation items for Normal Employee (Home, Feed, Worksheet, Setting)
   const employeeNav = [
     { 
       name: "Home", 
@@ -39,12 +39,6 @@ export function Sidebar() {
       href: "/worksheet", 
       icon: CalendarCheck,
       isActive: pathname === "/worksheet",
-    },
-    { 
-      name: "Management", 
-      href: "/admin/management", 
-      icon: Users,
-      isActive: pathname === "/admin/management",
     },
     { 
       name: "Setting", 
