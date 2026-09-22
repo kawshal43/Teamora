@@ -117,37 +117,37 @@ export default function AdminSettingPage() {
       {/* TAB 1: SHIFTS */}
       {activeTab === "shifts" && (
         <Card className="p-6">
-          <h3 className="text-sm font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
             Attendance & Work Shift Rules
           </h3>
 
           <form onSubmit={handleSaveShifts} className="space-y-4 text-xs">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Standard Work Start Time</label>
+                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Standard Work Start Time</label>
                 <input
                   type="time"
                   value={startTime}
                   onChange={(e) => setStartTime(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Standard Work End Time</label>
+                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Standard Work End Time</label>
                 <input
                   type="time"
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-700 mb-1">
+              <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                 Late-Arrival Grace Period (Minutes)
               </label>
               <input
@@ -156,10 +156,10 @@ export default function AdminSettingPage() {
                 max="60"
                 value={gracePeriod}
                 onChange={(e) => setGracePeriod(e.target.value)}
-                className="w-full sm:w-1/2 p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full sm:w-1/2 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
-              <p className="text-[11px] text-slate-400 mt-1">
+              <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">
                 Clocking in after {startTime} + {gracePeriod} minutes automatically flags attendance as "Late".
               </p>
             </div>
@@ -177,26 +177,26 @@ export default function AdminSettingPage() {
       {/* TAB 2: COMPANY PROFILE */}
       {activeTab === "company" && (
         <Card className="p-6 space-y-4 text-xs">
-          <h3 className="text-sm font-bold text-slate-900 pb-2 border-b border-slate-100">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white pb-2 border-b border-slate-100 dark:border-slate-800">
             Company Information
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-slate-700 mb-1">Organization Name</label>
+              <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Organization Name</label>
               <input
                 type="text"
                 defaultValue={orgSettings.name}
-                className="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50"
+                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                 readOnly
               />
             </div>
             <div>
-              <label className="block font-semibold text-slate-700 mb-1">Primary Timezone</label>
+              <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Primary Timezone</label>
               <input
                 type="text"
                 defaultValue="UTC (Coordinated Universal Time)"
-                className="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50"
+                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                 readOnly
               />
             </div>
@@ -207,7 +207,7 @@ export default function AdminSettingPage() {
       {/* TAB 3: LEAVE POLICIES */}
       {activeTab === "leave" && (
         <Card className="p-6 space-y-4 text-xs">
-          <h3 className="text-sm font-bold text-slate-900 pb-2 border-b border-slate-100">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white pb-2 border-b border-slate-100 dark:border-slate-800">
             Annual Leave Entitlement Templates
           </h3>
 
@@ -218,10 +218,10 @@ export default function AdminSettingPage() {
               { type: "Casual Leave", days: "5 days / year", paid: true },
               { type: "Unpaid Leave", days: "Flexible", paid: false },
             ].map((l, i) => (
-              <div key={i} className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div key={i} className="p-3 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-100 dark:border-slate-700 flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-slate-900">{l.type}</span>
-                  <span className="text-slate-400 text-[11px] block">{l.days}</span>
+                  <span className="font-bold text-slate-900 dark:text-white">{l.type}</span>
+                  <span className="text-slate-400 dark:text-slate-500 text-[11px] block">{l.days}</span>
                 </div>
                 <Badge variant={l.paid ? "success" : "neutral"} size="sm">
                   {l.paid ? "Paid Leave" : "Unpaid"}
@@ -235,21 +235,21 @@ export default function AdminSettingPage() {
       {/* TAB 4: AUDIT LOGS */}
       {activeTab === "audit" && (
         <Card className="p-6">
-          <h3 className="text-sm font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
             Chronological System Audit Trail
           </h3>
 
-          <div className="divide-y divide-slate-100 text-xs">
+          <div className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
             {auditLogs.map((log) => (
               <div key={log.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-slate-900">{log.actor}</span>
+                    <span className="font-bold text-slate-900 dark:text-white">{log.actor}</span>
                     <Badge variant="purple" size="sm">{log.action}</Badge>
                   </div>
-                  <p className="text-slate-600 mt-0.5">{log.details}</p>
+                  <p className="text-slate-600 dark:text-slate-300 mt-0.5">{log.details}</p>
                 </div>
-                <div className="text-right text-slate-400 text-[11px] whitespace-nowrap">
+                <div className="text-right text-slate-400 dark:text-slate-500 text-[11px] whitespace-nowrap">
                   {log.time}
                 </div>
               </div>

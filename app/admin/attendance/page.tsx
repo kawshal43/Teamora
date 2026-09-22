@@ -157,7 +157,68 @@ export default function AdminAttendancePage() {
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto">
+          {/* Mobile View: ONLY Name + Attend Mark (Green/Red) + Live Task */}
+          <div className="sm:hidden divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-slate-50 text-slate-500 font-bold uppercase tracking-wider text-[11px] flex items-center justify-between border-b border-slate-200">
+              <span>Employee</span>
+              <span>Attendance & Live Task</span>
+            </div>
+
+            {filteredSessions.length === 0 ? (
+              <div className="p-8 text-center text-xs text-slate-400">
+                No attendance sessions found.
+              </div>
+            ) : (
+              filteredSessions.map((s) => (
+                <div
+                  key={s.id}
+                  className="p-3.5 flex items-center justify-between gap-3 hover:bg-slate-50/80 cursor-pointer transition-colors"
+                >
+                  {/* Left: Avatar + Name ONLY */}
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="relative shrink-0">
+                      <img
+                        src={s.user_avatar}
+                        alt={s.user_name}
+                        className="w-10 h-10 rounded-full object-cover ring-2 ring-emerald-500/70"
+                      />
+                      <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white bg-emerald-500 animate-pulse" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h4 className="font-bold text-sm text-slate-900 leading-tight truncate">
+                        {s.user_name}
+                      </h4>
+
+                      <div className="mt-1 flex items-center gap-1.5">
+                        {s.ongoing_task ? (
+                          <div className="flex items-center gap-1 text-xs font-semibold text-emerald-600 truncate max-w-[190px]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping shrink-0" />
+                            <span className="truncate">⚡ {s.ongoing_task}</span>
+                          </div>
+                        ) : (
+                          <span className="text-[11px] text-slate-400 italic">
+                            Checked in • {formatDuration(s.duration_seconds)}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Attend mark (Green for present/active) */}
+                  <div className="shrink-0 flex items-center">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>Attended</span>
+                    </span>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Desktop View Table */}
+          <div className="hidden sm:block overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 text-slate-500 border-b border-slate-200">
                 <tr>
@@ -246,18 +307,18 @@ export default function AdminAttendancePage() {
 
                 {/* Side-by-Side Timestamp Comparison */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                  <div className="p-3 bg-white rounded-lg border border-slate-200/80">
-                    <p className="text-slate-400 font-medium">Original Recorded Times</p>
-                    <p className="font-semibold text-slate-700 mt-1">
+                  <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200/80 dark:border-slate-700">
+                    <p className="text-slate-400 dark:text-slate-500 font-medium">Original Recorded Times</p>
+                    <p className="font-semibold text-slate-700 dark:text-slate-200 mt-1">
                       In: {new Date(corr.original_check_in).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </p>
-                    <p className="font-semibold text-slate-700">
+                    <p className="font-semibold text-slate-700 dark:text-slate-200">
                       Out: {corr.original_check_out ? new Date(corr.original_check_out).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "None"}
                     </p>
                   </div>
 
-                  <div className="p-3 bg-blue-50/60 rounded-lg border border-blue-200">
-                    <p className="text-blue-600 font-bold">Requested Correction</p>
+                  <div className="p-3 bg-blue-50/60 dark:bg-blue-950/40 rounded-lg border border-blue-200 dark:border-blue-800">
+                    <p className="text-blue-600 dark:text-blue-400 font-bold">Requested Correction</p>
                     <p className="font-semibold text-blue-950 mt-1">In: {corr.requested_check_in}</p>
                     <p className="font-semibold text-blue-950">Out: {corr.requested_check_out}</p>
                   </div>

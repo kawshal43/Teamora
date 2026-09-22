@@ -12,6 +12,10 @@ export interface UserProfile {
   role: UserRole;
   designation: string;
   avatar_url?: string;
+  cover_url?: string;
+  bio?: string;
+  location?: string;
+  skills?: string[];
   phone?: string;
   is_active: boolean;
   joined_date: string;
@@ -70,6 +74,8 @@ export interface FeedComment {
   created_at: string;
 }
 
+export type ReactionType = 'like' | 'love' | 'care' | 'haha' | 'wow' | 'sad' | 'angry';
+
 export interface FeedPost {
   id: string;
   organization_id: string;
@@ -83,6 +89,7 @@ export interface FeedPost {
   content: string;
   is_announcement?: boolean;
   is_pinned?: boolean;
+  is_anonymous?: boolean;
   created_at: string;
   attachments: FeedAttachment[];
   likes_count: number;
@@ -90,6 +97,7 @@ export interface FeedPost {
   impressions_count: number;
   reach_count: number;
   has_liked?: boolean;
+  user_reaction?: ReactionType | null;
   comments: FeedComment[];
 }
 
@@ -99,7 +107,7 @@ export interface WorksheetActivity {
   task_id?: string;
   title: string;
   description?: string;
-  category: 'Development' | 'Design' | 'Meeting' | 'Review' | 'Planning' | 'General';
+  category: string;
   start_time: string; // ISO string
   end_time: string;   // ISO string
   duration_minutes: number;
@@ -193,7 +201,7 @@ export interface TaskActivity {
   department_name?: string;
   title: string;
   description?: string;
-  category?: 'Development' | 'Design' | 'Meeting' | 'Review' | 'Planning' | 'General';
+  category?: string;
   start_at: string; // ISO string
   end_at?: string | null; // ISO string; null while ongoing
   duration_seconds?: number;
