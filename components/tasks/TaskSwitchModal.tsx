@@ -51,22 +51,22 @@ export function TaskSwitchModal() {
           </p>
         </div>
 
-        <p className="text-xs font-semibold text-slate-700">
+        <p className="text-xs font-semibold text-slate-700 dark:text-slate-300">
           You already have an ongoing task. What would you like to do?
         </p>
 
         {/* Choice 1: End previous and start new */}
         <button
           onClick={handleConfirmSwitch}
-          className="w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-blue-50/50 hover:border-blue-300 transition-all group select-none shadow-xs"
+          className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50/50 dark:hover:bg-slate-700/60 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all group select-none shadow-xs"
         >
-          <div className="flex items-center justify-between font-bold text-xs text-slate-900 group-hover:text-blue-700 mb-1">
+          <div className="flex items-center justify-between font-bold text-xs text-slate-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 mb-1">
             <span>
               End {activeTask.title} and start {switchModalData.pendingTitle}
             </span>
-            <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
+            <ArrowRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
           </div>
-          <p className="text-[11px] text-slate-500 leading-relaxed">
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
             The previous task ends and the new task begins at the same recorded transition time.
           </p>
         </button>
@@ -74,13 +74,13 @@ export function TaskSwitchModal() {
         {/* Choice 2: Keep current task running */}
         <button
           onClick={handleCancel}
-          className="w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition-all group select-none shadow-xs"
+          className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/60 transition-all group select-none shadow-xs"
         >
-          <div className="flex items-center justify-between font-bold text-xs text-slate-900 mb-1">
+          <div className="flex items-center justify-between font-bold text-xs text-slate-900 dark:text-white mb-1">
             <span>Keep the current task running</span>
-            <RotateCcw className="w-4 h-4 text-slate-400" />
+            <RotateCcw className="w-4 h-4 text-slate-400 dark:text-slate-500" />
           </div>
-          <p className="text-[11px] text-slate-500 leading-relaxed">
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
             Cancel starting the new task. You can still create a manually timed entry for a different, non-overlapping period.
           </p>
         </button>

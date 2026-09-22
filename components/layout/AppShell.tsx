@@ -7,11 +7,12 @@ import { MobileBottomNav } from "./MobileBottomNav";
 import { TaskCreationModal } from "@/components/tasks/TaskCreationModal";
 import { TaskSwitchModal } from "@/components/tasks/TaskSwitchModal";
 import { TaskEditorModal } from "@/components/tasks/TaskEditorModal";
-import { DraggableOngoingWidget } from "@/components/tasks/FloatingTaskPopup";
+import { DraggableOngoingWidget, FloatingTaskPopup } from "@/components/tasks/FloatingTaskPopup";
+import { UserProfileModal } from "@/components/profile/UserProfileModal";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-[#f8fafc] text-slate-900 font-sans antialiased">
+    <div className="flex min-h-screen bg-[#f8fafc] dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
       {/* Desktop Fixed Left Sidebar */}
       <Sidebar />
 
@@ -28,13 +29,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Mobile-First Facebook-Style Sticky Bottom Menu */}
       <MobileBottomNav />
 
-      {/* Draggable Round Ongoing Task Widget (media_1789997053271.png) */}
+      {/* Draggable Round Ongoing Task Widget (media_1789997053271.png) & Anchored Popup */}
       <DraggableOngoingWidget />
+      <FloatingTaskPopup />
 
       {/* Global Task Modals (Accessible everywhere) */}
       <TaskCreationModal />
       <TaskSwitchModal />
       <TaskEditorModal />
+
+      {/* Global Facebook-Style User Profile Modal */}
+      <UserProfileModal />
     </div>
   );
 }

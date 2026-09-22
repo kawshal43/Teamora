@@ -132,26 +132,26 @@ export default function AdminDashboardPage() {
       <Card className="p-6">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
           <div className="flex items-center gap-2">
-            <h3 className="text-base font-bold text-slate-900">Active Workforce & Live Ongoing Tasks</h3>
-            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Active Workforce & Live Ongoing Tasks</h3>
+            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold border border-emerald-200 dark:border-emerald-800">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               {activeEmployees.length} Currently Active
             </span>
           </div>
-          <Link href="/admin/attendance" className="text-xs font-semibold text-blue-600 hover:text-blue-700">
+          <Link href="/admin/attendance" className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
             View Live Attendance &rarr;
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {activeEmployees.map((s) => (
-            <div key={s.id} className="p-4 rounded-xl bg-slate-50 border border-slate-100 flex flex-col justify-between space-y-3">
+            <div key={s.id} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 flex flex-col justify-between space-y-3">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2.5">
-                  <img src={s.user_avatar} alt={s.user_name} className="w-9 h-9 rounded-full object-cover ring-2 ring-white" />
+                  <img src={s.user_avatar} alt={s.user_name} className="w-9 h-9 rounded-full object-cover ring-2 ring-white dark:ring-slate-800" />
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900">{s.user_name}</h4>
-                    <p className="text-[10px] text-slate-400">{s.department_name}</p>
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white">{s.user_name}</h4>
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500">{s.department_name}</p>
                   </div>
                 </div>
                 <Badge variant={s.is_late ? "warning" : "success"} size="sm">
@@ -159,17 +159,17 @@ export default function AdminDashboardPage() {
                 </Badge>
               </div>
 
-              <div className="p-2.5 bg-white rounded-lg border border-slate-200/70 shadow-xs">
-                <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Ongoing Task</p>
-                <p className="text-xs font-bold text-blue-700 mt-0.5 flex items-center gap-1.5">
+              <div className="p-2.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200/70 dark:border-slate-700 shadow-xs">
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">Ongoing Task</p>
+                <p className="text-xs font-bold text-blue-700 dark:text-blue-400 mt-0.5 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                   {s.ongoing_task || "General Work"}
                 </p>
               </div>
 
-              <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
+              <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800">
                 <span>In: {new Date(s.check_in).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
-                <span className="font-semibold text-slate-800">{formatDuration(s.duration_seconds)}</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">{formatDuration(s.duration_seconds)}</span>
               </div>
             </div>
           ))}

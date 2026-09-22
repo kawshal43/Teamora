@@ -17,6 +17,7 @@ import {
   TaskRevision,
   TaskActivityStatus,
   TaskEntryMode,
+  ReactionType,
 } from "@/types";
 
 export const MOCK_USERS: Record<UserRole, UserProfile> = {
@@ -31,7 +32,11 @@ export const MOCK_USERS: Record<UserRole, UserProfile> = {
     email: "nethmi.silva@teamora.internal",
     role: "employee",
     designation: "Frontend Engineer",
-    avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=80",
+    bio: "Passionate about creating fluid, accessible user interfaces with Next.js, Tailwind CSS, and TypeScript. Lifelong learner and design system enthusiast.",
+    location: "Colombo, Sri Lanka",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "UI Design"],
     phone: "+1 (555) 234-8921",
     is_active: true,
     joined_date: "2024-03-15",
@@ -47,7 +52,11 @@ export const MOCK_USERS: Record<UserRole, UserProfile> = {
     email: "sarah.lin@teamora.internal",
     role: "sub_admin",
     designation: "Engineering Lead",
-    avatar_url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+    avatar_url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
+    bio: "Leading engineering teams building reliable, scalable systems. Dedicated to code craftsmanship, mentor culture, and high velocity.",
+    location: "San Francisco, CA",
+    skills: ["Architecture", "React/Next.js", "Node.js", "PostgreSQL", "Cloud Systems", "Team Leadership"],
     phone: "+1 (555) 432-1098",
     is_active: true,
     joined_date: "2023-01-10",
@@ -63,7 +72,11 @@ export const MOCK_USERS: Record<UserRole, UserProfile> = {
     email: "david.miller@teamora.internal",
     role: "hr_admin",
     designation: "HR Director",
-    avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200&auto=format&fit=crop&q=80",
+    bio: "Championing workplace equity, transparent performance frameworks, and building our global hybrid culture.",
+    location: "Austin, TX",
+    skills: ["Talent Operations", "Workforce Analytics", "Culture Strategy", "Employee Relations"],
     phone: "+1 (555) 678-9012",
     is_active: true,
     joined_date: "2022-08-01",
@@ -79,7 +92,11 @@ export const MOCK_USERS: Record<UserRole, UserProfile> = {
     email: "elena.rostova@teamora.internal",
     role: "owner",
     designation: "Chief Executive Officer",
-    avatar_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    avatar_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&auto=format&fit=crop&q=80",
+    bio: "CEO & Co-founder at Teamora. Uniting cross-functional company operations through seamless social workflows.",
+    location: "New York, NY",
+    skills: ["Executive Leadership", "Product Strategy", "Venture Growth", "Enterprise Operations"],
     phone: "+1 (555) 111-2233",
     is_active: true,
     joined_date: "2021-01-01",
@@ -88,22 +105,9 @@ export const MOCK_USERS: Record<UserRole, UserProfile> = {
 
 export const ALL_EMPLOYEES: UserProfile[] = [
   MOCK_USERS.employee,
-  {
-    id: "user-nimal",
-    organization_id: "org-teamora",
-    department_id: "dept-eng",
-    department_name: "Engineering",
-    employee_id: "EMP-1055",
-    first_name: "Nimal",
-    last_name: "Perera",
-    email: "nimal.perera@teamora.internal",
-    role: "employee",
-    designation: "Video Producer & Editor",
-    avatar_url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
-    phone: "+1 (555) 987-6543",
-    is_active: true,
-    joined_date: "2024-06-01",
-  },
+  MOCK_USERS.sub_admin,
+  MOCK_USERS.hr_admin,
+  MOCK_USERS.owner,
   {
     id: "user-dinesh",
     organization_id: "org-teamora",
@@ -115,14 +119,155 @@ export const ALL_EMPLOYEES: UserProfile[] = [
     email: "dinesh.perera@teamora.internal",
     role: "employee",
     designation: "Product Designer",
-    avatar_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+    avatar_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80",
+    bio: "Translating complex operational workflows into intuitive, delight-driven interface systems and typography.",
+    location: "Colombo, Sri Lanka",
+    skills: ["Product Design", "Figma", "Design Systems", "User Research", "Prototyping"],
     phone: "+1 (555) 789-0123",
     is_active: true,
     joined_date: "2023-11-15",
   },
-  MOCK_USERS.sub_admin,
-  MOCK_USERS.hr_admin,
-  MOCK_USERS.owner,
+  {
+    id: "user-alex",
+    organization_id: "org-teamora",
+    department_id: "dept-eng",
+    department_name: "Engineering",
+    employee_id: "EMP-1025",
+    first_name: "Alex",
+    last_name: "Chen",
+    email: "alex.chen@teamora.internal",
+    role: "employee",
+    designation: "Full Stack Engineer",
+    avatar_url: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&auto=format&fit=crop&q=80",
+    bio: "Full stack web developer passionate about API scalability, Next.js server actions, and cloud databases.",
+    location: "Seattle, WA",
+    skills: ["Full Stack", "TypeScript", "Node.js", "GraphQL", "PostgreSQL", "Docker"],
+    phone: "+1 (555) 321-6549",
+    is_active: true,
+    joined_date: "2023-04-12",
+  },
+  {
+    id: "user-nimal",
+    organization_id: "org-teamora",
+    department_id: "dept-eng",
+    department_name: "Engineering",
+    employee_id: "EMP-1055",
+    first_name: "Nimal",
+    last_name: "Perera",
+    email: "nimal.perera@teamora.internal",
+    role: "employee",
+    designation: "Video Producer & Editor",
+    avatar_url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&auto=format&fit=crop&q=80",
+    bio: "Visual storyteller focusing on company keynotes, media production, and documentation reels.",
+    location: "Kandy, Sri Lanka",
+    skills: ["Motion Graphics", "Video Editing", "Creative Direction", "Media Production"],
+    phone: "+1 (555) 987-6543",
+    is_active: true,
+    joined_date: "2024-06-01",
+  },
+  {
+    id: "user-marcus",
+    organization_id: "org-teamora",
+    department_id: "dept-eng",
+    department_name: "Engineering",
+    employee_id: "EMP-1012",
+    first_name: "Marcus",
+    last_name: "Vance",
+    email: "marcus.vance@teamora.internal",
+    role: "sub_admin",
+    designation: "DevOps Engineer",
+    avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
+    bio: "Automating cloud infrastructure, zero-downtime deployments, and platform telemetry across Kubernetes.",
+    location: "Denver, CO",
+    skills: ["DevOps", "Kubernetes", "AWS", "Terraform", "CI/CD", "Monitoring"],
+    phone: "+1 (555) 456-7890",
+    is_active: true,
+    joined_date: "2022-10-01",
+  },
+  {
+    id: "user-priya",
+    organization_id: "org-teamora",
+    department_id: "dept-ops",
+    department_name: "Operations & Sales",
+    employee_id: "EMP-1060",
+    first_name: "Priya",
+    last_name: "Sharma",
+    email: "priya.sharma@teamora.internal",
+    role: "employee",
+    designation: "Data Analytics Lead",
+    avatar_url: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
+    bio: "Unlocking business value and team productivity insights through data science and intelligence dashboards.",
+    location: "Chicago, IL",
+    skills: ["Data Analytics", "Python", "SQL", "Tableau", "Forecasting", "Business Intelligence"],
+    phone: "+1 (555) 890-1234",
+    is_active: true,
+    joined_date: "2024-01-15",
+  },
+  {
+    id: "user-kevin",
+    organization_id: "org-teamora",
+    department_id: "dept-eng",
+    department_name: "Engineering",
+    employee_id: "EMP-1077",
+    first_name: "Kevin",
+    last_name: "Zhang",
+    email: "kevin.zhang@teamora.internal",
+    role: "employee",
+    designation: "QA Automation Engineer",
+    avatar_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
+    bio: "Ensuring software excellence with automated testing suites, regression verification, and performance profiling.",
+    location: "Toronto, Canada",
+    skills: ["Playwright", "Cypress", "Automated QA", "Jest", "Load Testing"],
+    phone: "+1 (555) 678-4321",
+    is_active: true,
+    joined_date: "2024-05-10",
+  },
+  {
+    id: "user-rachel",
+    organization_id: "org-teamora",
+    department_id: "dept-mkt",
+    department_name: "Marketing",
+    employee_id: "EMP-1082",
+    first_name: "Rachel",
+    last_name: "Adams",
+    email: "rachel.adams@teamora.internal",
+    role: "employee",
+    designation: "Marketing Specialist",
+    avatar_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80",
+    bio: "Crafting impactful brand narratives, social campaigns, and internal workforce communications.",
+    location: "Boston, MA",
+    skills: ["Content Strategy", "Social Media", "Copywriting", "Communications", "Campaigns"],
+    phone: "+1 (555) 345-6789",
+    is_active: true,
+    joined_date: "2024-02-20",
+  },
+  {
+    id: "user-liam",
+    organization_id: "org-teamora",
+    department_id: "dept-eng",
+    department_name: "Engineering",
+    employee_id: "EMP-1008",
+    first_name: "Liam",
+    last_name: "O'Connor",
+    email: "liam.oconnor@teamora.internal",
+    role: "sub_admin",
+    designation: "Cloud Architect",
+    avatar_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=80",
+    cover_url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&auto=format&fit=crop&q=80",
+    bio: "Designing secure, high-throughput cloud infrastructure and zero-trust security postures for enterprise scale.",
+    location: "Dublin, Ireland",
+    skills: ["Cloud Architecture", "AWS/GCP", "Zero Trust", "Terraform", "Distributed Systems"],
+    phone: "+1 (555) 567-8901",
+    is_active: true,
+    joined_date: "2022-11-01",
+  },
 ];
 
 export function formatSecondsToDigital(seconds: number): string {
@@ -168,12 +313,19 @@ interface AppContextType {
   rejectCorrection: (correctionId: string) => void;
   tasks: Task[];
   toggleTaskStatus: (taskId: string) => void;
-  createTask: (title: string, priority: Task["priority"], dueDate: string, assignedTo: string) => void;
+  createTask: (title: string, priority: Task["priority"], dueDate: string, assignedTo: string, description?: string, status?: Task["status"]) => void;
+  updateTask: (taskId: string, updates: Partial<Task>) => void;
+  deleteTask: (taskId: string) => void;
   posts: FeedPost[];
-  createPost: (content: string, attachments?: any[], isAnnouncement?: boolean, targetDept?: string) => void;
+  createPost: (content: string, attachments?: any[], isAnnouncement?: boolean, targetDept?: string, isAnonymous?: boolean) => void;
   toggleLike: (postId: string) => void;
+  reactToPost: (postId: string, reaction: ReactionType) => void;
   addComment: (postId: string, content: string) => void;
   deletePost: (postId: string) => void;
+  updateEmployee: (id: string, data: Partial<UserProfile>) => void;
+  deleteEmployee: (id: string) => void;
+  addEmployee: (employee: Omit<UserProfile, "id">) => void;
+  toggleEmployeeActive: (id: string) => void;
   activities: WorksheetActivity[];
   reports: WorksheetReport[];
   addActivity: (activity: Omit<WorksheetActivity, "id" | "user_id" | "is_submitted">) => void;
@@ -185,6 +337,7 @@ interface AppContextType {
   submitLeaveRequest: (type: LeaveRequest["leave_type"], start: string, end: string, days: number, reason: string) => void;
   approveLeave: (id: string) => void;
   rejectLeave: (id: string) => void;
+  setEmployeeLeaveStatus: (userId: string, isOnLeave: boolean, leaveType?: LeaveRequest["leave_type"], reason?: string) => void;
   departments: Department[];
   orgSettings: OrganizationSettings;
   updateOrgSettings: (newSettings: Partial<OrganizationSettings>) => void;
@@ -201,12 +354,15 @@ interface AppContextType {
   endActiveTask: (manualEndTime?: string) => void;
   createManualTask: (data: { title: string; category?: TaskActivity["category"]; description?: string; start_at: string; end_at: string; employee_id?: string }) => { success: boolean; conflict?: TaskActivity };
   updateTaskActivity: (taskId: string, updates: Partial<TaskActivity>, reason?: string) => void;
+  updateMultipleTasks: (taskUpdates: { taskId: string; updates: Partial<TaskActivity>; reason?: string }[]) => void;
   deleteTaskActivity: (taskId: string) => void;
   checkOverlap: (employeeId: string, startAt: string, endAt: string, excludeTaskId?: string) => TaskActivity | null;
 
   // UI Modal Controls
   isTaskPopupOpen: boolean;
   setIsTaskPopupOpen: (open: boolean) => void;
+  taskPopupAnchor: { x: number; y: number; width?: number; height?: number } | null;
+  setTaskPopupAnchor: (anchor: { x: number; y: number; width?: number; height?: number } | null) => void;
   editingTask: TaskActivity | null;
   setEditingTask: (task: TaskActivity | null) => void;
   isCreateTaskModalOpen: boolean;
@@ -215,10 +371,91 @@ interface AppContextType {
   setCreateTaskModalPrefill: (data: { date?: string; hour?: number; minute?: number } | null) => void;
   switchModalData: { isOpen: boolean; pendingTitle: string; pendingCategory?: TaskActivity["category"]; pendingDescription?: string } | null;
   setSwitchModalData: (data: { isOpen: boolean; pendingTitle: string; pendingCategory?: TaskActivity["category"]; pendingDescription?: string } | null) => void;
+
+  // Dark & Light Mode Theme Support
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+  setTheme: (theme: "light" | "dark") => void;
+
+  // User Profile Inspection
+  selectedProfileUser: UserProfile | null;
+  openUserProfile: (userOrId: string | UserProfile) => void;
+  closeUserProfile: () => void;
 }
 
 const STORAGE_KEY_TASKS = "teamora_task_activities_v2";
 const STORAGE_KEY_REVISIONS = "teamora_task_revisions_v2";
+const STORAGE_KEY_THEME = "teamora_theme";
+
+/**
+ * Strict Task Overlap Sanitizer:
+ * Enforces zero overlap for any employee on any given day.
+ * If consecutive tasks overlap: the above task's end time is shifted earlier (upper) to
+ * flush with the succeeding task's start time ("above box must go upper").
+ */
+export function resolveTaskOverlaps(tasks: TaskActivity[]): TaskActivity[] {
+  if (!tasks || tasks.length <= 1) return tasks || [];
+
+  // Group by employee_id and calendar date (YYYY-MM-DD)
+  const employeeDateMap = new Map<string, TaskActivity[]>();
+
+  tasks.forEach((task) => {
+    const d = new Date(task.start_at);
+    const dateKey = !isNaN(d.getTime())
+      ? `${task.employee_id}_${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`
+      : `${task.employee_id}_unknown`;
+
+    if (!employeeDateMap.has(dateKey)) {
+      employeeDateMap.set(dateKey, []);
+    }
+    employeeDateMap.get(dateKey)!.push({ ...task });
+  });
+
+  const resolvedTasks: TaskActivity[] = [];
+
+  employeeDateMap.forEach((dayTasks) => {
+    // Sort tasks by start_at ascending
+    dayTasks.sort((a, b) => new Date(a.start_at).getTime() - new Date(b.start_at).getTime());
+
+    for (let i = 0; i < dayTasks.length - 1; i++) {
+      const current = dayTasks[i];
+      const next = dayTasks[i + 1];
+
+      const currentStartMs = new Date(current.start_at).getTime();
+      const currentEndMs = current.end_at
+        ? new Date(current.end_at).getTime()
+        : (current.duration_seconds ? currentStartMs + current.duration_seconds * 1000 : currentStartMs + 3600000);
+      const nextStartMs = new Date(next.start_at).getTime();
+
+      // If current task overlaps into next task: "above box must go upper"
+      if (currentEndMs > nextStartMs) {
+        if (nextStartMs >= currentStartMs + 5 * 60 * 1000) {
+          // Above box's end time moves upper to next task's start time
+          current.end_at = next.start_at;
+          current.duration_seconds = Math.max(300, Math.floor((nextStartMs - currentStartMs) / 1000));
+          if (current.status === "Ongoing") {
+            current.status = "Completed";
+          }
+          current.updated_at = new Date().toISOString();
+        } else {
+          // Less than 5 mins space: push above box's start earlier so it maintains at least 5 mins
+          const shiftedStartMs = nextStartMs - 5 * 60 * 1000;
+          current.start_at = new Date(shiftedStartMs).toISOString();
+          current.end_at = next.start_at;
+          current.duration_seconds = 300;
+          if (current.status === "Ongoing") {
+            current.status = "Completed";
+          }
+          current.updated_at = new Date().toISOString();
+        }
+      }
+    }
+
+    resolvedTasks.push(...dayTasks);
+  });
+
+  return resolvedTasks;
+}
 
 function generateInitialTasks(): TaskActivity[] {
   const now = Date.now();
@@ -421,7 +658,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const savedTasks = localStorage.getItem(STORAGE_KEY_TASKS);
       if (savedTasks) {
         try {
-          setTaskActivities(JSON.parse(savedTasks));
+          const parsed = JSON.parse(savedTasks);
+          setTaskActivities(resolveTaskOverlaps(parsed));
         } catch (e) {
           console.error("Failed to parse saved task activities", e);
         }
@@ -440,10 +678,75 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   // Modal and UI Controls
   const [isTaskPopupOpen, setIsTaskPopupOpen] = useState(false);
+  const [taskPopupAnchor, setTaskPopupAnchor] = useState<{ x: number; y: number; width?: number; height?: number } | null>(null);
   const [editingTask, setEditingTask] = useState<TaskActivity | null>(null);
   const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
   const [createTaskModalPrefill, setCreateTaskModalPrefill] = useState<{ date?: string; hour?: number; minute?: number } | null>(null);
   const [switchModalData, setSwitchModalData] = useState<{ isOpen: boolean; pendingTitle: string; pendingCategory?: TaskActivity["category"]; pendingDescription?: string } | null>(null);
+
+  // Dark & Light Mode Theme Support
+  const [theme, setThemeState] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem(STORAGE_KEY_THEME) as "light" | "dark" | null;
+      const initialTheme = savedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      setThemeState(initialTheme);
+      if (initialTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    }
+  }, []);
+
+  const setTheme = (newTheme: "light" | "dark") => {
+    setThemeState(newTheme);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(STORAGE_KEY_THEME, newTheme);
+      if (newTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    }
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  // User Profile Inspection Modal State
+  const [selectedProfileUser, setSelectedProfileUser] = useState<UserProfile | null>(null);
+
+  const openUserProfile = (userOrId: string | UserProfile) => {
+    if (!userOrId) return;
+    if (typeof userOrId === "object") {
+      setSelectedProfileUser(userOrId);
+      return;
+    }
+    const idStr = String(userOrId).trim().toLowerCase();
+    const found =
+      ALL_EMPLOYEES.find(
+        (u) =>
+          u.id.toLowerCase() === idStr ||
+          u.employee_id.toLowerCase() === idStr ||
+          u.email.toLowerCase() === idStr ||
+          `${u.first_name} ${u.last_name}`.toLowerCase() === idStr ||
+          u.first_name.toLowerCase() === idStr
+      ) ||
+      Object.values(MOCK_USERS).find(
+        (u) =>
+          u.id.toLowerCase() === idStr ||
+          u.employee_id.toLowerCase() === idStr ||
+          `${u.first_name} ${u.last_name}`.toLowerCase() === idStr
+      );
+    if (found) {
+      setSelectedProfileUser(found);
+    }
+  };
+
+  const closeUserProfile = () => setSelectedProfileUser(null);
 
   // Sync to localStorage after hydration
   useEffect(() => {
@@ -575,6 +878,90 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       is_late: true,
       ongoing_task: "Q2 Compensation & Policy Audit",
       ongoing_task_category: "Operations",
+    },
+    {
+      id: "att-elena",
+      organization_id: "org-teamora",
+      user_id: MOCK_USERS.owner.id,
+      user_name: "Elena Rostova",
+      user_avatar: MOCK_USERS.owner.avatar_url,
+      department_name: "Operations & Sales",
+      work_date: todayStr,
+      check_in: "2025-04-22T08:30:00Z",
+      duration_seconds: 14400,
+      status: "active",
+      ongoing_task: "Executive Strategy & Board Review",
+      ongoing_task_category: "Operations",
+    },
+    {
+      id: "att-dinesh",
+      organization_id: "org-teamora",
+      user_id: "user-dinesh",
+      user_name: "Dinesh Perera",
+      user_avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80",
+      department_name: "Product & Design",
+      work_date: todayStr,
+      check_in: "2025-04-22T09:05:00Z",
+      duration_seconds: 12600,
+      status: "active",
+      ongoing_task: "UI Design Mockup Polish",
+      ongoing_task_category: "Design",
+    },
+    {
+      id: "att-nimal",
+      organization_id: "org-teamora",
+      user_id: "user-nimal",
+      user_name: "Nimal Perera",
+      user_avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80",
+      department_name: "Engineering",
+      work_date: todayStr,
+      check_in: "2025-04-22T09:15:00Z",
+      duration_seconds: 12000,
+      status: "active",
+      ongoing_task: "Video Editing",
+      ongoing_task_category: "Development",
+    },
+    {
+      id: "att-marcus",
+      organization_id: "org-teamora",
+      user_id: "user-marcus",
+      user_name: "Marcus Vance",
+      user_avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+      department_name: "Engineering",
+      work_date: todayStr,
+      check_in: "2025-04-22T08:45:00Z",
+      duration_seconds: 13800,
+      status: "active",
+      ongoing_task: "Cloud Cluster Scaling & Telemetry",
+      ongoing_task_category: "Operations",
+    },
+    {
+      id: "att-priya",
+      organization_id: "org-teamora",
+      user_id: "user-priya",
+      user_name: "Priya Sharma",
+      user_avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop&q=80",
+      department_name: "Operations & Sales",
+      work_date: todayStr,
+      check_in: "2025-04-22T09:10:00Z",
+      duration_seconds: 12300,
+      status: "active",
+      ongoing_task: "Q3 Analytics Model Forecasting",
+      ongoing_task_category: "Operations",
+    },
+    {
+      id: "att-liam",
+      organization_id: "org-teamora",
+      user_id: "user-liam",
+      user_name: "Liam O'Connor",
+      user_avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=80",
+      department_name: "Engineering",
+      work_date: todayStr,
+      check_in: "2025-04-22T09:00:00Z",
+      duration_seconds: 12900,
+      status: "active",
+      ongoing_task: "Architecture Security Benchmark",
+      ongoing_task_category: "Development",
     }
   ]);
 
@@ -644,6 +1031,36 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const [posts, setPosts] = useState<FeedPost[]>([
     {
+      id: "post-anonymous-sample",
+      organization_id: "org-teamora",
+      author_id: "anon-sample",
+      author_name: "Anonymous Colleague",
+      author_avatar: "",
+      author_role: "employee",
+      author_designation: "Verified Team Member • Identity Protected",
+      content: "💡 Question for management: Could we consider introducing flexible remote days on alternate Fridays? It would greatly improve team work-life balance and deep focus time!",
+      is_anonymous: true,
+      created_at: "3 hours ago",
+      attachments: [],
+      likes_count: 27,
+      comments_count: 5,
+      impressions_count: 72,
+      reach_count: 48,
+      has_liked: false,
+      comments: [
+        {
+          id: "comm-anon-1",
+          post_id: "post-anonymous-sample",
+          author_id: MOCK_USERS.sub_admin.id,
+          author_name: "Sarah Lin",
+          author_avatar: MOCK_USERS.sub_admin.avatar_url,
+          author_role: "sub_admin",
+          content: "We're actually discussing this in our next sprint planning meeting! Great initiative. 👏",
+          created_at: "2 hours ago",
+        }
+      ],
+    },
+    {
       id: "post-announcement",
       organization_id: "org-teamora",
       author_id: MOCK_USERS.owner.id,
@@ -655,7 +1072,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       is_announcement: true,
       is_pinned: true,
       created_at: "Yesterday at 4:30 PM",
-      attachments: [],
+      attachments: [
+        {
+          id: "att-1",
+          file_url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
+          file_name: "all-hands-celebration.jpg",
+          file_type: "image"
+        }
+      ],
       likes_count: 42,
       comments_count: 8,
       impressions_count: 96,
@@ -684,9 +1108,16 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       author_avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
       author_role: "employee",
       author_designation: "Product Designer",
-      content: "Great progress on the product roadmap this sprint! Big thanks to everyone for the collaboration. 🚀",
+      content: "Great progress on the product roadmap this sprint! Big thanks to everyone for the collaboration. 🚀\n\nCheckout the new interactive workspace components preview!",
       created_at: "2 hours ago",
-      attachments: [],
+      attachments: [
+        {
+          id: "att-2",
+          file_url: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&auto=format&fit=crop&q=80",
+          file_name: "product-roadmap-preview.jpg",
+          file_type: "image"
+        }
+      ],
       likes_count: 18,
       comments_count: 3,
       impressions_count: 54,
@@ -810,6 +1241,34 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       reason: "Family travel and personal commitments.",
       status: "pending",
       created_at: "2025-04-20",
+    },
+    {
+      id: "leave-alex",
+      user_id: "user-alex",
+      user_name: "Alex Chen",
+      user_avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80",
+      department_name: "Engineering",
+      leave_type: "Annual",
+      start_date: "2026-09-21",
+      end_date: "2026-09-25",
+      days_count: 5,
+      reason: "Approved Annual Leave - Family vacation and personal travel.",
+      status: "approved",
+      created_at: "2026-09-18",
+    },
+    {
+      id: "leave-rachel",
+      user_id: "user-rachel",
+      user_name: "Rachel Adams",
+      user_avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+      department_name: "Marketing",
+      leave_type: "Sick",
+      start_date: "2026-09-21",
+      end_date: "2026-09-22",
+      days_count: 2,
+      reason: "Medical recovery - Doctor advised rest.",
+      status: "approved",
+      created_at: "2026-09-20",
     }
   ]);
 
@@ -829,6 +1288,32 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     half_day_hours: 4,
     full_day_hours: 8,
   });
+
+  const [allEmployees, setAllEmployees] = useState<UserProfile[]>(ALL_EMPLOYEES);
+
+  const updateEmployee = (id: string, data: Partial<UserProfile>) => {
+    setAllEmployees((prev) =>
+      prev.map((emp) => (emp.id === id ? { ...emp, ...data } : emp))
+    );
+  };
+
+  const deleteEmployee = (id: string) => {
+    setAllEmployees((prev) => prev.filter((emp) => emp.id !== id));
+  };
+
+  const addEmployee = (employee: Omit<UserProfile, "id">) => {
+    const newEmp: UserProfile = {
+      ...employee,
+      id: `user-${Date.now()}`,
+    };
+    setAllEmployees((prev) => [newEmp, ...prev]);
+  };
+
+  const toggleEmployeeActive = (id: string) => {
+    setAllEmployees((prev) =>
+      prev.map((emp) => (emp.id === id ? { ...emp, is_active: !emp.is_active } : emp))
+    );
+  };
 
   const switchRole = (role: UserRole) => {
     setCurrentUser(MOCK_USERS[role]);
@@ -904,37 +1389,85 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
-  const createTask = (title: string, priority: Task["priority"], dueDate: string, assignedTo: string) => {
+  const createTask = (
+    title: string, 
+    priority: Task["priority"] = "medium", 
+    dueDate: string = "Due today", 
+    assignedTo: string = currentUser.id,
+    description: string = "",
+    status: Task["status"] = "todo"
+  ) => {
+    let assignedName = `${currentUser.first_name} ${currentUser.last_name}`;
+    const allKnown = [...ALL_EMPLOYEES, ...Object.values(MOCK_USERS)];
+    const userFound = allKnown.find((u) => u.id === assignedTo);
+    if (userFound) {
+      assignedName = `${userFound.first_name} ${userFound.last_name}`;
+    }
+
     const newTask: Task = {
       id: `task-${Date.now()}`,
       organization_id: "org-teamora",
       title,
-      description: "",
+      description,
       assigned_to: assignedTo,
-      assigned_to_name: "Nethmi Silva",
+      assigned_to_name: assignedName,
       assigned_by: currentUser.id,
       assigned_by_name: `${currentUser.first_name} ${currentUser.last_name}`,
       priority,
-      status: "todo",
+      status,
       due_date: dueDate,
       created_at: new Date().toISOString(),
     };
     setTasks((prev) => [newTask, ...prev]);
   };
 
-  const createPost = (content: string, attachments: any[] = [], isAnnouncement: boolean = false, targetDept?: string) => {
+  const updateTask = (taskId: string, updates: Partial<Task>) => {
+    setTasks((prev) =>
+      prev.map((t) => {
+        if (t.id === taskId) {
+          let assignedName = t.assigned_to_name;
+          if (updates.assigned_to && updates.assigned_to !== t.assigned_to) {
+            const allKnown = [...ALL_EMPLOYEES, ...Object.values(MOCK_USERS)];
+            const userFound = allKnown.find((u) => u.id === updates.assigned_to);
+            if (userFound) {
+              assignedName = `${userFound.first_name} ${userFound.last_name}`;
+            }
+          }
+          return {
+            ...t,
+            ...updates,
+            assigned_to_name: updates.assigned_to_name || assignedName,
+          };
+        }
+        return t;
+      })
+    );
+  };
+
+  const deleteTask = (taskId: string) => {
+    setTasks((prev) => prev.filter((t) => t.id !== taskId));
+  };
+
+  const createPost = (
+    content: string, 
+    attachments: any[] = [], 
+    isAnnouncement: boolean = false, 
+    targetDept?: string,
+    isAnonymous: boolean = false
+  ) => {
     const newPost: FeedPost = {
       id: `post-${Date.now()}`,
       organization_id: "org-teamora",
-      department_id: targetDept,
-      author_id: currentUser.id,
-      author_name: `${currentUser.first_name} ${currentUser.last_name}`,
-      author_avatar: currentUser.avatar_url,
-      author_role: currentUser.role,
-      author_designation: currentUser.designation,
+      department_id: isAnonymous ? undefined : targetDept,
+      author_id: isAnonymous ? `anon-${Date.now()}` : currentUser.id,
+      author_name: isAnonymous ? "Anonymous Colleague" : `${currentUser.first_name} ${currentUser.last_name}`,
+      author_avatar: isAnonymous ? "" : currentUser.avatar_url,
+      author_role: isAnonymous ? "employee" : currentUser.role,
+      author_designation: isAnonymous ? "Verified Team Member • Identity Protected" : currentUser.designation,
       content,
-      is_announcement: isAnnouncement,
-      is_pinned: isAnnouncement,
+      is_announcement: isAnonymous ? false : isAnnouncement,
+      is_pinned: isAnonymous ? false : isAnnouncement,
+      is_anonymous: isAnonymous,
       created_at: "Just now",
       attachments: attachments || [],
       likes_count: 0,
@@ -947,20 +1480,40 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setPosts((prev) => [newPost, ...prev]);
   };
 
-  const toggleLike = (postId: string) => {
+  const reactToPost = (postId: string, reaction: ReactionType) => {
     setPosts((prev) =>
       prev.map((p) => {
         if (p.id === postId) {
-          const hasLiked = !p.has_liked;
+          if (p.user_reaction === reaction) {
+            // Toggling off the same reaction
+            return {
+              ...p,
+              has_liked: false,
+              user_reaction: null,
+              likes_count: Math.max(0, p.likes_count - 1),
+            };
+          }
+          // Changing reaction or newly reacting
+          const wasReacted = !!p.user_reaction || p.has_liked;
           return {
             ...p,
-            has_liked: hasLiked,
-            likes_count: hasLiked ? p.likes_count + 1 : Math.max(0, p.likes_count - 1),
+            has_liked: true,
+            user_reaction: reaction,
+            likes_count: wasReacted ? p.likes_count : p.likes_count + 1,
           };
         }
         return p;
       })
     );
+  };
+
+  const toggleLike = (postId: string) => {
+    const targetPost = posts.find((p) => p.id === postId);
+    if (targetPost?.user_reaction) {
+      reactToPost(postId, targetPost.user_reaction);
+    } else {
+      reactToPost(postId, "like");
+    }
   };
 
   const addComment = (postId: string, content: string) => {
@@ -1103,6 +1656,38 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setLeaveRequests((prev) =>
       prev.map((l) => (l.id === id ? { ...l, status: "rejected", reviewed_by: currentUser.id } : l))
     );
+  };
+
+  const setEmployeeLeaveStatus = (
+    userId: string, 
+    isOnLeave: boolean, 
+    leaveType: LeaveRequest["leave_type"] = "Annual", 
+    reason: string = "Approved time off / personal leave."
+  ) => {
+    setLeaveRequests((prev) => {
+      if (!isOnLeave) {
+        return prev.filter((r) => !(r.user_id === userId && r.status === "approved" && r.start_date <= "2026-09-21" && r.end_date >= "2026-09-21"));
+      } else {
+        const targetEmp = ALL_EMPLOYEES.find((e) => e.id === userId);
+        const existing = prev.find((r) => r.user_id === userId && r.status === "approved" && r.start_date <= "2026-09-21" && r.end_date >= "2026-09-21");
+        if (existing) return prev;
+        const newLeave: LeaveRequest = {
+          id: `leave-auto-${Date.now()}`,
+          user_id: userId,
+          user_name: targetEmp ? `${targetEmp.first_name} ${targetEmp.last_name}` : "Employee",
+          user_avatar: targetEmp?.avatar_url,
+          department_name: targetEmp?.department_name || "Engineering",
+          leave_type: leaveType,
+          start_date: "2026-09-21",
+          end_date: "2026-09-25",
+          days_count: 5,
+          reason,
+          status: "approved",
+          created_at: new Date().toISOString().split("T")[0],
+        };
+        return [newLeave, ...prev];
+      }
+    });
   };
 
   const updateOrgSettings = (newSettings: Partial<OrganizationSettings>) => {
@@ -1323,8 +1908,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       setTaskRevisions((prev) => [revision, ...prev]);
     }
 
-    setTaskActivities((prev) =>
-      prev.map((t) => {
+    setTaskActivities((prev) => {
+      const updated = prev.map((t) => {
         if (t.id === taskId) {
           const newStart = updates.start_at || t.start_at;
           const newEnd = updates.end_at !== undefined ? updates.end_at : t.end_at;
@@ -1353,8 +1938,80 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           };
         }
         return t;
-      })
-    );
+      });
+
+      return resolveTaskOverlaps(updated);
+    });
+  };
+
+  const updateMultipleTasks = (
+    taskUpdates: { taskId: string; updates: Partial<TaskActivity>; reason?: string }[]
+  ) => {
+    if (!taskUpdates.length) return;
+
+    const newRevisions: TaskRevision[] = [];
+    taskUpdates.forEach(({ taskId, updates, reason }) => {
+      const existing = taskActivities.find((t) => t.id === taskId);
+      if (!existing) return;
+      const startChanged = updates.start_at && updates.start_at !== existing.start_at;
+      const endChanged = updates.end_at !== undefined && updates.end_at !== existing.end_at;
+      if (startChanged || endChanged) {
+        newRevisions.push({
+          id: `rev-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+          task_id: existing.id,
+          task_title: updates.title || existing.title,
+          original_start: existing.start_at,
+          original_end: existing.end_at,
+          updated_start: updates.start_at || existing.start_at,
+          updated_end: updates.end_at !== undefined ? updates.end_at : existing.end_at,
+          edited_by: currentUser.id,
+          edited_by_name: `${currentUser.first_name} ${currentUser.last_name}`,
+          edited_at: new Date().toISOString(),
+          reason: reason || "Task layout collision resolution",
+          was_live_recorded: existing.entry_mode === "live",
+        });
+      }
+    });
+
+    if (newRevisions.length > 0) {
+      setTaskRevisions((prev) => [...newRevisions, ...prev]);
+    }
+
+    setTaskActivities((prev) => {
+      const updateMap = new Map(taskUpdates.map((u) => [u.taskId, u.updates]));
+      const updated = prev.map((t) => {
+        const updates = updateMap.get(t.id);
+        if (!updates) return t;
+
+        const newStart = updates.start_at || t.start_at;
+        const newEnd = updates.end_at !== undefined ? updates.end_at : t.end_at;
+        let newDuration = t.duration_seconds;
+        let newStatus = updates.status || t.status;
+
+        if (newEnd) {
+          newDuration = Math.max(
+            0,
+            Math.floor((new Date(newEnd).getTime() - new Date(newStart).getTime()) / 1000)
+          );
+          if (t.status === "Ongoing") {
+            newStatus = "Completed";
+          }
+        }
+
+        return {
+          ...t,
+          ...updates,
+          start_at: newStart,
+          end_at: newEnd,
+          status: newStatus,
+          duration_seconds: newDuration,
+          updated_at: new Date().toISOString(),
+          version: t.version + 1,
+        };
+      });
+
+      return resolveTaskOverlaps(updated);
+    });
   };
 
   const deleteTaskActivity = (taskId: string) => {
@@ -1378,9 +2035,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         tasks,
         toggleTaskStatus,
         createTask,
+        updateTask,
+        deleteTask,
         posts,
         createPost,
         toggleLike,
+        reactToPost,
         addComment,
         deletePost,
         activities,
@@ -1394,6 +2054,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         submitLeaveRequest,
         approveLeave,
         rejectLeave,
+        setEmployeeLeaveStatus,
         departments,
         orgSettings,
         updateOrgSettings,
@@ -1404,18 +2065,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         activeTask,
         activeTaskElapsedSeconds,
         todayTotalWorkSeconds,
-        allEmployees: ALL_EMPLOYEES,
+        allEmployees,
+        updateEmployee,
+        deleteEmployee,
+        addEmployee,
+        toggleEmployeeActive,
         startLiveTask,
         confirmTaskSwitch,
         endActiveTask,
         createManualTask,
         updateTaskActivity,
+        updateMultipleTasks,
         deleteTaskActivity,
         checkOverlap,
 
         // UI Modal Controls
         isTaskPopupOpen,
         setIsTaskPopupOpen,
+        taskPopupAnchor,
+        setTaskPopupAnchor,
         editingTask,
         setEditingTask,
         isCreateTaskModalOpen,
@@ -1424,6 +2092,16 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         setCreateTaskModalPrefill,
         switchModalData,
         setSwitchModalData,
+
+        // Theme Support
+        theme,
+        toggleTheme,
+        setTheme,
+
+        // User Profile Inspection
+        selectedProfileUser,
+        openUserProfile,
+        closeUserProfile,
       }}
     >
       {children}
