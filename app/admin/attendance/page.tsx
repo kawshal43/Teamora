@@ -60,8 +60,8 @@ export default function AdminAttendancePage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-slate-900">Attendance Monitoring & Corrections</h2>
-          <p className="text-xs text-slate-500">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Attendance Monitoring & Corrections</h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Organization-wide check-in logs, punctuality matrix, and correction request reviews.
           </p>
         </div>
@@ -78,20 +78,20 @@ export default function AdminAttendancePage() {
       </div>
 
       {exportMessage && (
-        <div className="p-3 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-xl text-xs flex items-center gap-2 font-semibold">
+        <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-xl text-xs flex items-center gap-2 font-semibold">
           <Check className="w-4 h-4" />
           <span>{exportMessage}</span>
         </div>
       )}
 
       {/* Sub-Tabs: Matrix vs Corrections */}
-      <div className="flex border-b border-slate-200">
+      <div className="flex border-b border-slate-200 dark:border-slate-800">
         <button
           onClick={() => setActiveTab("matrix")}
-          className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold border-b-2 transition-all ${
+          className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold border-b-2 transition-all cursor-pointer ${
             activeTab === "matrix"
-              ? "border-blue-600 text-blue-600"
-              : "border-transparent text-slate-500 hover:text-slate-800"
+              ? "border-blue-600 text-blue-600 dark:text-blue-400"
+              : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
           }`}
         >
           <Clock className="w-4 h-4" />
@@ -100,10 +100,10 @@ export default function AdminAttendancePage() {
 
         <button
           onClick={() => setActiveTab("corrections")}
-          className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold border-b-2 transition-all ${
+          className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold border-b-2 transition-all cursor-pointer ${
             activeTab === "corrections"
-              ? "border-blue-600 text-blue-600"
-              : "border-transparent text-slate-500 hover:text-slate-800"
+              ? "border-blue-600 text-blue-600 dark:text-blue-400"
+              : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
           }`}
         >
           <AlertCircle className="w-4 h-4" />
@@ -123,17 +123,17 @@ export default function AdminAttendancePage() {
                 value={searchEmp}
                 onChange={(e) => setSearchEmp(e.target.value)}
                 placeholder="Search employee name..."
-                className="w-full pl-9 pr-3 py-2 bg-slate-50 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               <button
                 onClick={() => setShowActiveOnly(!showActiveOnly)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                   showActiveOnly
                     ? "bg-blue-600 text-white shadow-xs"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
                 }`}
               >
                 <span className={`w-2 h-2 rounded-full ${showActiveOnly ? "bg-white animate-pulse" : "bg-blue-500"}`} />
@@ -141,11 +141,11 @@ export default function AdminAttendancePage() {
               </button>
 
               <div className="flex items-center gap-1.5">
-                <span className="text-xs text-slate-400">Dept:</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500">Dept:</span>
                 <select
                   value={filterDept}
                   onChange={(e) => setFilterDept(e.target.value)}
-                  className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-700 text-xs focus:outline-none"
+                  className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-700 dark:text-slate-200 text-xs focus:outline-none cursor-pointer"
                 >
                   <option value="all">All Departments</option>
                   <option value="Engineering">Engineering</option>
@@ -158,21 +158,21 @@ export default function AdminAttendancePage() {
 
           {/* Table */}
           {/* Mobile View: ONLY Name + Attend Mark (Green/Red) + Live Task */}
-          <div className="sm:hidden divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
-            <div className="px-4 py-3 bg-slate-50 text-slate-500 font-bold uppercase tracking-wider text-[11px] flex items-center justify-between border-b border-slate-200">
+          <div className="sm:hidden divide-y divide-slate-100 dark:divide-slate-800 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[11px] flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800">
               <span>Employee</span>
               <span>Attendance & Live Task</span>
             </div>
 
             {filteredSessions.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-400">
+              <div className="p-8 text-center text-xs text-slate-400 dark:text-slate-500">
                 No attendance sessions found.
               </div>
             ) : (
               filteredSessions.map((s) => (
                 <div
                   key={s.id}
-                  className="p-3.5 flex items-center justify-between gap-3 hover:bg-slate-50/80 cursor-pointer transition-colors"
+                  className="p-3.5 flex items-center justify-between gap-3 hover:bg-slate-50/80 dark:hover:bg-slate-800/50 cursor-pointer transition-colors"
                 >
                   {/* Left: Avatar + Name ONLY */}
                   <div className="flex items-center gap-3 min-w-0">
@@ -182,22 +182,22 @@ export default function AdminAttendancePage() {
                         alt={s.user_name}
                         className="w-10 h-10 rounded-full object-cover ring-2 ring-emerald-500/70"
                       />
-                      <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white bg-emerald-500 animate-pulse" />
+                      <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white dark:ring-slate-900 bg-emerald-500 animate-pulse" />
                     </div>
 
                     <div className="min-w-0">
-                      <h4 className="font-bold text-sm text-slate-900 leading-tight truncate">
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-white leading-tight truncate">
                         {s.user_name}
                       </h4>
 
                       <div className="mt-1 flex items-center gap-1.5">
                         {s.ongoing_task ? (
-                          <div className="flex items-center gap-1 text-xs font-semibold text-emerald-600 truncate max-w-[190px]">
+                          <div className="flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 truncate max-w-[190px]">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping shrink-0" />
                             <span className="truncate">⚡ {s.ongoing_task}</span>
                           </div>
                         ) : (
-                          <span className="text-[11px] text-slate-400 italic">
+                          <span className="text-[11px] text-slate-400 dark:text-slate-500 italic">
                             Checked in • {formatDuration(s.duration_seconds)}
                           </span>
                         )}
@@ -207,7 +207,7 @@ export default function AdminAttendancePage() {
 
                   {/* Right: Attend mark (Green for present/active) */}
                   <div className="shrink-0 flex items-center">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shadow-2xs">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       <span>Attended</span>
                     </span>
@@ -218,9 +218,9 @@ export default function AdminAttendancePage() {
           </div>
 
           {/* Desktop View Table */}
-          <div className="hidden sm:block overflow-x-auto">
+          <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-slate-800">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 text-slate-500 border-b border-slate-200">
+              <thead className="bg-slate-50 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-slate-800 font-bold uppercase tracking-wider text-[11px]">
                 <tr>
                   <th className="p-3 font-semibold">Employee</th>
                   <th className="p-3 font-semibold">Department</th>
@@ -232,26 +232,26 @@ export default function AdminAttendancePage() {
                   <th className="p-3 font-semibold text-right">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
                 {filteredSessions.map((s) => (
-                  <tr key={s.id} className="hover:bg-slate-50/50">
-                    <td className="p-3 font-semibold text-slate-900 flex items-center gap-2.5">
+                  <tr key={s.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white flex items-center gap-2.5">
                       <img
                         src={s.user_avatar}
                         alt={s.user_name}
-                        className="w-7 h-7 rounded-full object-cover ring-1 ring-slate-200"
+                        className="w-7 h-7 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700"
                       />
                       <span>{s.user_name}</span>
                     </td>
-                    <td className="p-3 text-slate-600">{s.department_name}</td>
-                    <td className="p-3 text-slate-600">{s.work_date}</td>
-                    <td className="p-3 font-medium text-slate-800">
+                    <td className="p-3 text-slate-600 dark:text-slate-300">{s.department_name}</td>
+                    <td className="p-3 text-slate-600 dark:text-slate-300">{s.work_date}</td>
+                    <td className="p-3 font-medium text-slate-800 dark:text-slate-200">
                       {new Date(s.check_in).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </td>
-                    <td className="p-3 font-medium text-slate-800">
+                    <td className="p-3 font-medium text-slate-800 dark:text-slate-200">
                       {s.check_out ? new Date(s.check_out).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "— (Active)"}
                     </td>
-                    <td className="p-3 font-bold text-slate-900">
+                    <td className="p-3 font-bold text-slate-900 dark:text-white">
                       {formatDuration(s.duration_seconds)}
                     </td>
                     <td className="p-3">
@@ -259,17 +259,17 @@ export default function AdminAttendancePage() {
                         <div className="flex items-center gap-1.5">
                           <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold ${
                             s.status === "active" 
-                              ? "bg-blue-50 text-blue-700 border border-blue-200/80 shadow-xs" 
-                              : "bg-slate-100 text-slate-600"
+                              ? "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800 shadow-xs" 
+                              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
                           }`}>
                             {s.status === "active" && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
                             )}
                             <span>{s.ongoing_task}</span>
                           </span>
                         </div>
                       ) : (
-                        <span className="text-slate-400 text-xs italic">None recorded</span>
+                        <span className="text-slate-400 dark:text-slate-500 text-xs italic">None recorded</span>
                       )}
                     </td>
                     <td className="p-3 text-right">
@@ -288,17 +288,17 @@ export default function AdminAttendancePage() {
       {/* TAB 2: CORRECTIONS */}
       {activeTab === "corrections" && (
         <Card className="p-6">
-          <h3 className="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
             Pending Attendance Timestamp Corrections
           </h3>
 
           <div className="space-y-4">
             {corrections.map((corr) => (
-              <div key={corr.id} className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-3">
+              <div key={corr.id} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">{corr.user_name}</h4>
-                    <p className="text-xs text-slate-400">Created: {new Date(corr.created_at).toLocaleDateString()}</p>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">{corr.user_name}</h4>
+                    <p className="text-xs text-slate-400 dark:text-slate-500">Created: {new Date(corr.created_at).toLocaleDateString()}</p>
                   </div>
                   <Badge variant={corr.status === "approved" ? "success" : corr.status === "rejected" ? "danger" : "warning"} size="sm">
                     {corr.status}
@@ -319,17 +319,17 @@ export default function AdminAttendancePage() {
 
                   <div className="p-3 bg-blue-50/60 dark:bg-blue-950/40 rounded-lg border border-blue-200 dark:border-blue-800">
                     <p className="text-blue-600 dark:text-blue-400 font-bold">Requested Correction</p>
-                    <p className="font-semibold text-blue-950 mt-1">In: {corr.requested_check_in}</p>
-                    <p className="font-semibold text-blue-950">Out: {corr.requested_check_out}</p>
+                    <p className="font-semibold text-blue-950 dark:text-blue-200 mt-1">In: {corr.requested_check_in}</p>
+                    <p className="font-semibold text-blue-950 dark:text-blue-200">Out: {corr.requested_check_out}</p>
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-600 italic">
+                <p className="text-xs text-slate-600 dark:text-slate-300 italic">
                   Reason: "{corr.reason}"
                 </p>
 
                 {corr.status === "pending" && (
-                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200/60">
+                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
                     <Button size="sm" variant="danger" onClick={() => rejectCorrection(corr.id)}>
                       Reject
                     </Button>

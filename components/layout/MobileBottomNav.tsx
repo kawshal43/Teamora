@@ -153,6 +153,7 @@ export function MobileBottomNav() {
               return (
                 <button
                   key={tab.name}
+                  aria-label={tab.name}
                   onClick={() => {
                     if (isNotification) {
                       setShowNotifications(true);
@@ -206,6 +207,7 @@ export function MobileBottomNav() {
               <Link
                 key={tab.name}
                 href={tab.href}
+                aria-label={tab.name}
                 className="flex items-center justify-center flex-1 py-1 text-center select-none"
               >
                 {isActive ? (

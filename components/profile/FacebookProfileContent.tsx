@@ -65,11 +65,12 @@ export function FacebookProfileContent({
 
   const isSelf = currentUser.id === user.id;
 
-  // Filter posts written by or associated with this user
+  // Filter posts written by or associated with this user (excluding anonymous posts to preserve strict privacy)
   const userPosts = posts.filter(
     (p) =>
-      p.author_id === user.id ||
-      p.author_name.toLowerCase() === `${user.first_name} ${user.last_name}`.toLowerCase()
+      !p.is_anonymous &&
+      (p.author_id === user.id ||
+       p.author_name.toLowerCase() === `${user.first_name} ${user.last_name}`.toLowerCase())
   );
 
   // Filter tasks assigned to this user

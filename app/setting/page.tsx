@@ -106,13 +106,13 @@ export default function SettingPage() {
         <div className="space-y-6">
           {/* Avatar Card */}
           <Card className="p-6">
-            <h3 className="text-sm font-bold text-slate-900 mb-4">Profile Photo</h3>
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Profile Photo</h3>
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <div className="relative group">
                 <img
                   src={currentUser.avatar_url}
                   alt={currentUser.first_name}
-                  className="w-24 h-24 rounded-full object-cover ring-4 ring-slate-100 shadow-md"
+                  className="w-24 h-24 rounded-full object-cover ring-4 ring-slate-100 dark:ring-slate-800 shadow-md"
                 />
                 <button
                   onClick={() => setShowAvatarModal(true)}
@@ -130,10 +130,10 @@ export default function SettingPage() {
                   onClick={() => setShowAvatarModal(true)}
                   className="gap-2"
                 >
-                  <UploadCloud className="w-4 h-4 text-blue-600" />
+                  <UploadCloud className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   <span>Change Profile Photo</span>
                 </Button>
-                <p className="text-[11px] text-slate-400">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500">
                   Recommended: Square JPG or PNG, 500x500px or larger.
                 </p>
               </div>
